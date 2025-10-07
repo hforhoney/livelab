@@ -1,0 +1,421 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Vida Tresses — Luxury Hair & Extensions</title>
+  <meta name="description" content="Luxury extensions and protective styles, expertly installed for effortless elegance. Book now with Vida Tresses." />
+
+  <style>
+    /* =========
+       Brand Tokens
+       ========= */
+    :root{
+      --pink-50:#fff6fa;
+      --pink-100:#ffe6f0;
+      --pink-200:#ffd2e2;
+      --pink-300:#ffb6cf;
+      --pink-400:#ff8fb3;
+      --pink-500:#f777a3; /* Primary accent */
+      --gold:#c9a44b;     /* Metallic gold accent */
+      --ink:#1f1a1c;      /* Primary text */
+      --muted:#6c5f66;    /* Secondary text */
+      --bg:#fff;
+      --card:#ffffff;
+      --line:#eddbe3;
+      --radius:18px;
+      --shadow:0 10px 30px rgba(0,0,0,.06);
+      --max:1120px;
+    }
+
+    /* Reset-ish */
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0}
+    body{
+      font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Apple Color Emoji","Segoe UI Emoji";
+      color:var(--ink);
+      background:var(--pink-50);
+      line-height:1.5;
+    }
+    img{max-width:100%;display:block}
+    a{text-decoration:none;color:inherit}
+    .container{max-width:var(--max);margin:0 auto;padding:0 20px}
+
+    /* ======== Top Bar / Nav ======== */
+    .topbar{
+      background:linear-gradient(180deg, #fff, var(--pink-50));
+      border-bottom:1px solid var(--line);
+      position:sticky; top:0; z-index:50;
+      backdrop-filter: blur(6px);
+    }
+    .nav{
+      display:flex; align-items:center; justify-content:space-between;
+      padding:14px 0;
+    }
+    .brand{
+      display:flex; align-items:center; gap:10px; font-weight:700; letter-spacing:.5px;
+    }
+    .brand .logo{
+      width:36px; height:36px; border-radius:50%;
+      background:
+        radial-gradient(circle at 30% 30%, #fff 0 30%, transparent 31%),
+        radial-gradient(circle at 70% 70%, #fff 0 30%, transparent 31%),
+        linear-gradient(135deg, #fdf7e3, #f2d790 60%, #d9b860);
+      outline:2px solid rgba(201,164,75,.35);
+      box-shadow: inset 0 1px 6px rgba(255,255,255,.6), 0 3px 10px rgba(0,0,0,.08);
+    }
+    .brand span{color:var(--ink)}
+    .pill{
+      border:1px solid var(--gold);
+      color:var(--ink);
+      padding:8px 14px; border-radius:999px; font-weight:600;
+      transition:transform .08s ease, background .2s ease;
+    }
+    .pill:hover{background:rgba(201,164,75,.08); transform:translateY(-1px)}
+
+    /* ======== Hero ======== */
+    .hero{
+      display:grid; gap:28px;
+      grid-template-columns: 1.2fr .8fr;
+      align-items:center;
+      padding:56px 0 28px;
+    }
+    .hero h1{
+      font-size: clamp(28px, 4vw, 46px);
+      line-height:1.1; margin:0 0 14px;
+      letter-spacing:.3px;
+    }
+    .sub{
+      color:var(--muted); max-width:52ch; margin-bottom:22px;
+    }
+    .cta-row{display:flex; gap:12px; flex-wrap:wrap}
+    .btn{
+      display:inline-block; padding:14px 20px; border-radius:12px; font-weight:700;
+      border:1px solid transparent; box-shadow:var(--shadow);
+    }
+    .btn-primary{ background: linear-gradient(180deg, var(--pink-400), var(--pink-500)); color:white; }
+    .btn-outline{ border-color:var(--gold); color:var(--ink); background:#fff; }
+    .trust{
+      display:flex; gap:18px; align-items:center; margin-top:18px; flex-wrap:wrap; color:var(--muted); font-size:14px;
+    }
+    .hero-media{
+      position:relative; border-radius:var(--radius); overflow:hidden; box-shadow:var(--shadow); aspect-ratio: 4/5;
+      background:#f9f1f4;
+    }
+    .ribbon{
+      position:absolute; left:14px; top:14px; background:#fff; border:1px solid var(--line); padding:8px 12px; border-radius:999px; font-size:13px; font-weight:600;
+    }
+    .gold-bar{
+      position:absolute; right:0; top:0; width:10px; height:100%;
+      background:linear-gradient(180deg, #f7e7b0, #e6c773 40%, #c9a44b 60%, #9b7b34);
+    }
+    .hero img{object-fit:cover; width:100%; height:100%}
+
+    /* ======== Benefits ======== */
+    .section{padding:56px 0}
+    .section-title{
+      text-align:center; margin:0 0 10px; font-size: clamp(22px, 3.2vw, 36px);
+    }
+    .kicker{ text-align:center; color:var(--muted); margin:0 auto 28px; max-width:60ch }
+    .grid-3{
+      display:grid; gap:16px; grid-template-columns: repeat(3, 1fr);
+    }
+    .card{
+      background:var(--card); border:1px solid var(--line); border-radius:var(--radius); padding:20px; box-shadow:var(--shadow);
+    }
+    .eyebrow{font-size:13px; color:var(--muted); letter-spacing:.4px; text-transform:uppercase}
+    .card h3{margin:6px 0 8px; font-size:20px}
+    .card p{color:var(--muted); margin:0}
+
+    /* ======== Split band (Story / Impact) ======== */
+    .split{
+      display:grid; gap:24px; grid-template-columns: 1fr 1fr; align-items:center;
+      background: linear-gradient(180deg, #fff, var(--pink-100));
+      border:1px solid var(--line); border-radius:var(--radius); padding:24px;
+    }
+    .split .media{border-radius:var(--radius); overflow:hidden; aspect-ratio:16/11; background:#f6eef2; box-shadow:var(--shadow)}
+    .split h3{margin:0 0 8px}
+    .bullets{margin:10px 0 0; padding-left:18px; color:var(--muted)}
+    .bullets li{margin:6px 0}
+
+    /* ======== Services ======== */
+    .grid-4{
+      display:grid; gap:16px; grid-template-columns: repeat(4, 1fr);
+    }
+    .tag{display:inline-block; font-size:12px; padding:6px 10px; border-radius:999px; border:1px solid var(--line); background:#fff}
+
+    /* ======== Gallery ======== */
+    .gallery{
+      display:grid; gap:10px; grid-template-columns:repeat(6, 1fr);
+    }
+    .tile{aspect-ratio:1/1; background:#f2e8ed; border-radius:14px; overflow:hidden; border:1px solid var(--line)}
+    .tile img{width:100%; height:100%; object-fit:cover}
+
+    /* ======== Testimonials ======== */
+    .quote{
+      background:#fff; border:1px solid var(--line); border-radius:var(--radius); padding:24px; box-shadow:var(--shadow);
+    }
+    .stars{letter-spacing:2px}
+
+    /* ======== FAQ ======== */
+    details{
+      background:#fff; border:1px solid var(--line); border-radius:14px; padding:16px 18px; margin:10px 0;
+    }
+    summary{cursor:pointer; font-weight:600}
+    details p{color:var(--muted); margin:8px 0 0}
+
+    /* ======== CTA Footer ======== */
+    .cta-band{
+      background:linear-gradient(90deg, var(--pink-300), var(--pink-500));
+      color:#fff; border-radius:var(--radius); padding:28px; box-shadow:var(--shadow);
+      display:flex; gap:18px; align-items:center; justify-content:space-between; flex-wrap:wrap;
+    }
+    .cta-band .btn{box-shadow:none; border-color:rgba(255,255,255,.6)}
+    .footer{
+      text-align:center; color:var(--muted); font-size:14px; padding:22px 0 46px;
+    }
+    .socials{display:flex; gap:12px; justify-content:center; margin-top:8px}
+    .socials a{border:1px solid var(--line); background:#fff; padding:8px 12px; border-radius:999px}
+
+    /* ======== Responsive ======== */
+    @media (max-width: 960px){
+      .hero{grid-template-columns:1fr}
+      .grid-3{grid-template-columns:1fr}
+      .split{grid-template-columns:1fr}
+      .grid-4{grid-template-columns:1fr 1fr}
+      .gallery{grid-template-columns:repeat(3,1fr)}
+    }
+    @media (max-width: 560px){
+      .grid-4{grid-template-columns:1fr}
+      .gallery{grid-template-columns:repeat(2,1fr)}
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top bar -->
+  <div class="topbar">
+    <div class="container nav">
+      <div class="brand">
+        <div class="logo" aria-hidden="true"></div>
+        <span>Vida Tresses</span>
+      </div>
+      <nav class="nav-links" aria-label="Primary">
+        <a class="pill" href="#services">Services</a>
+        <a class="pill" href="#gallery">Gallery</a>
+        <a class="pill" href="#booking">Book</a>
+        <a class="pill" href="#contact">Contact</a>
+      </nav>
+    </div>
+  </div>
+
+  <!-- Hero -->
+  <header class="container hero">
+    <div>
+      <h1>Luxury Extensions & Protective Styles, <br/>Expertly Installed.</h1>
+      <p class="sub">
+        Elevate your everyday with premium hair, seamless installs, and protective techniques that
+        honor your texture. Step into a look that lasts—and feels like you.
+      </p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="#booking">Book an Appointment</a>
+        <a class="btn btn-outline" href="#shop">Shop Extensions</a>
+      </div>
+      <div class="trust">
+        <span>✨ 1,000+ installs</span>
+        <span>•</span>
+        <span>5★ client reviews</span>
+        <span>•</span>
+        <span>Quality-guaranteed hair</span>
+      </div>
+    </div>
+
+    <div class="hero-media" aria-label="Featured hairstyle image">
+      <span class="ribbon">Signature Knotless</span>
+      <span class="gold-bar" aria-hidden="true"></span>
+      <!-- Replace with your hero image -->
+      <img src="images/hero.jpg" alt="Model with luxury knotless braids" />
+    </div>
+  </header>
+
+  <!-- Benefits -->
+  <section class="section">
+    <div class="container">
+      <h2 class="section-title">Why Vida Tresses</h2>
+      <p class="kicker">A luxury salon experience crafted for textured hair—comfort, longevity, and shine in every style.</p>
+
+      <div class="grid-3">
+        <article class="card">
+          <div class="eyebrow">Premium Quality</div>
+          <h3>Top-grade Hair & Tools</h3>
+          <p>We source extensions you can wash, heat-style, and reuse. No tangles. No guesswork.</p>
+        </article>
+        <article class="card">
+          <div class="eyebrow">Protective First</div>
+          <h3>Gentle, Scalp-Safe Installs</h3>
+          <p>Techniques that protect your edges and promote healthy growth underneath the style.</p>
+        </article>
+        <article class="card">
+          <div class="eyebrow">Luxury Service</div>
+          <h3>On-Time & Relaxing</h3>
+          <p>Private suites, prompt appointments, and a calm, elevated vibe from start to finish.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Story / Impact (split band) -->
+  <section class="section">
+    <div class="container split">
+      <div class="media">
+        <!-- Replace with your brand story image -->
+        <img src="images/story.jpg" alt="Salon interior with elegant pink and gold decor" />
+      </div>
+      <div>
+        <h3>Crafted for Effortless Elegance</h3>
+        <p class="sub">
+          Every install is customized to your texture, lifestyle, and desired maintenance level.
+          From knotless braids to seamlessly blended extensions—we make glam last.
+        </p>
+        <ul class="bullets">
+          <li>Consultations that match you to the right hair + style</li>
+          <li>Technique focused on tension control & comfort</li>
+          <li>At-home care guide to extend wear between appointments</li>
+        </ul>
+        <div class="cta-row" style="margin-top:14px">
+          <a class="btn btn-outline" href="#gallery">See the Looks</a>
+          <a class="btn btn-primary" href="#booking">Reserve Your Spot</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section id="services" class="section">
+    <div class="container">
+      <h2 class="section-title">Signature Services</h2>
+      <p class="kicker">Choose from our most-requested styles. Prices vary by length, density, and customization.</p>
+
+      <div class="grid-4">
+        <article class="card">
+          <img src="images/service-knotless.jpg" alt="Knotless braids" />
+          <h3>Knotless Braids</h3>
+          <p class="sub">Lightweight, flat, and tension-controlled for comfort and longevity.</p>
+          <span class="tag">From $220</span>
+        </article>
+        <article class="card">
+          <img src="images/service-cornrows.jpg" alt="Feed-in cornrows" />
+          <h3>Feed-in Cornrows</h3>
+          <p class="sub">Crisp parts and clean lines for a polished everyday look.</p>
+          <span class="tag">From $120</span>
+        </article>
+        <article class="card">
+          <img src="images/service-kinky.jpg" alt="Kinky twists" />
+          <h3>Kinky Twists</h3>
+          <p class="sub">Soft, voluminous twists in natural textures—bold yet protective.</p>
+          <span class="tag">From $180</span>
+        </article>
+        <article class="card">
+          <img src="images/service-extensions.jpg" alt="Sew-in or microlink extensions" />
+          <h3>Luxury Extensions</h3>
+          <p class="sub">Seamless blends with premium bundles; tailored to your lifestyle.</p>
+          <span class="tag">Consultation</span>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery -->
+  <section id="gallery" class="section">
+    <div class="container">
+      <h2 class="section-title">Before & After</h2>
+      <p class="kicker">A few transformations from recent installs. Replace these with your own looks.</p>
+      <div class="gallery">
+        <figure class="tile"><img src="images/g1.jpg" alt="Gallery 1" /></figure>
+        <figure class="tile"><img src="images/g2.jpg" alt="Gallery 2" /></figure>
+        <figure class="tile"><img src="images/g3.jpg" alt="Gallery 3" /></figure>
+        <figure class="tile"><img src="images/g4.jpg" alt="Gallery 4" /></figure>
+        <figure class="tile"><img src="images/g5.jpg" alt="Gallery 5" /></figure>
+        <figure class="tile"><img src="images/g6.jpg" alt="Gallery 6" /></figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="section">
+    <div class="container">
+      <h2 class="section-title">Client Love</h2>
+      <p class="kicker">What our clients say about the Vida Tresses experience.</p>
+
+      <div class="grid-3">
+        <blockquote class="quote">
+          <div class="stars">★★★★★</div>
+          “My knotless braids were feather-light and so neat. Two weeks in and still flawless.”
+          <footer class="sub">— Jada M.</footer>
+        </blockquote>
+        <blockquote class="quote">
+          <div class="stars">★★★★★</div>
+          “The install felt gentle on my scalp. I finally kept my edges healthy while wearing braids!”
+          <footer class="sub">— Renee K.</footer>
+        </blockquote>
+        <blockquote class="quote">
+          <div class="stars">★★★★★</div>
+          “Beautiful salon, on-time service, and the hair quality is unmatched. I’m obsessed.”
+          <footer class="sub">— Aleah S.</footer>
+        </blockquote>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section">
+    <div class="container">
+      <h2 class="section-title">FAQs</h2>
+      <details>
+        <summary>How do I prepare for my appointment?</summary>
+        <p>Please arrive with clean, fully detangled hair. Avoid heavy oils/butters 24 hours prior.</p>
+      </details>
+      <details>
+        <summary>Do you provide hair?</summary>
+        <p>Yes, we carry premium bundles and braiding hair. You can also bring your own—ask us for specs.</p>
+      </details>
+      <details>
+        <summary>How long will my style last?</summary>
+        <p>With proper care, knotless/cornrows last 4–6 weeks; extensions vary by method and maintenance.</p>
+      </details>
+    </div>
+  </section>
+
+  <!-- CTA Band -->
+  <section id="booking" class="section">
+    <div class="container cta-band">
+      <div>
+        <h3 style="margin:0 0 6px">Ready for your new look?</h3>
+        <p style="margin:0">Secure your appointment now or message us for a quick consultation.</p>
+      </div>
+      <div class="cta-row">
+        <a class="btn btn-outline" href="https://calendly.com/yourlink" target="_blank" rel="noopener">Book Now</a>
+        <a class="btn btn-outline" href="mailto:vidatresses@gmail.com">Ask a Question</a>
+        <a class="btn btn-outline" id="shop" href="#">Shop Extensions</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer id="contact" class="footer">
+    <div class="container">
+      <div>© <span id="year"></span> Vida Tresses. All rights reserved.</div>
+      <div class="socials">
+        <a href="https://instagram.com/yourhandle" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://wa.me/15551234567" target="_blank" rel="noopener">WhatsApp</a>
+        <a href="mailto:vidatresses@gmail.com">Email</a>
+      </div>
+    </div>
+    <script>
+      // Tiny progressive enhancement: set current year without frameworks
+      document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+  </footer>
+
+</body>
+</html>
